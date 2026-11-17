@@ -36,6 +36,21 @@ mvn spring-boot:run
 
 Le tableau de bord Eureka est disponible sur http://localhost:8761. Les trois clients y apparaissent après leur démarrage.
 
+## Captures d'écran
+
+Captures réalisées pendant le démarrage local : Eureka est opérationnel et la Gateway apparaît comme instance `UP` dans le registre. Le point de santé Actuator de la Gateway retourne également `UP`.
+
+![Tableau de bord Eureka avec la Gateway enregistrée](docs/screenshots/eureka-dashboard.png)
+
+![État de santé de Spring Cloud Gateway](docs/screenshots/gateway-health.png)
+
+### Résultat du démarrage local
+
+- Eureka démarre sur le port `8761`.
+- Gateway démarre sur le port `8888`, s'enregistre dans Eureka et répond `UP` sur `/actuator/health`.
+- Les services Client et Car n'ont pas démarré : MariaDB/XAMPP écoute sur `3306`, mais la négociation MySQL échoue pendant le handshake. Son journal signale des erreurs InnoDB sur `mysql/gtid_slave_pos.ibd`. Les données MySQL existantes n'ont pas été modifiées.
+- La machine utilise JDK 21 pour ce démarrage ; le projet reste configuré pour Java 17, conformément au TP.
+
 ## Endpoints
 
 | Application | Port | Endpoints principaux |
