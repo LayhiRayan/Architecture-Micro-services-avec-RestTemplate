@@ -16,7 +16,7 @@ Depuis la racine du dépôt, ouvrir quatre terminaux et exécuter dans cet ordre
 
 ```powershell
 cd eureka-server
-..\mvnw.cmd spring-boot:run
+mvn spring-boot:run
 ```
 
 ```powershell
